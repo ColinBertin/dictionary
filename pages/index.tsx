@@ -1,10 +1,17 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkMode = () => {
+    setDarkMode((mode) => !mode);
+  };
+
   return (
     <div className="h-screen w-screen">
       <Head>
@@ -13,7 +20,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavBar />
+        <NavBar darkMode={darkMode} handleDarkMode={handleDarkMode} />
       </main>
     </div>
   );
