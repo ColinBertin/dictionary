@@ -1,9 +1,10 @@
 import Head from "next/head";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import { useState } from "react";
+import clsx from "clsx";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
@@ -13,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen w-screen">
+    <div className={clsx(darkMode ? "bg-black" : "", "h-screen w-screen")}>
       <Head>
         <title>My Dictionary</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

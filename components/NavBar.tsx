@@ -1,6 +1,6 @@
 import { BsBookHalf, BsSunFill, BsMoonFill } from "react-icons/bs";
 import { Switch } from "@headlessui/react";
-import { clsx } from "clsx";
+import clsx from "clsx";
 
 type NavBarProps = {
   darkMode: boolean;
@@ -10,7 +10,7 @@ type NavBarProps = {
 export default function NavBar({ darkMode, handleDarkMode }: NavBarProps) {
   return (
     <nav className="flex justify-between py-4 px-6">
-      <BsBookHalf size={24} color={clsx(darkMode ? "red" : "green")} />
+      <BsBookHalf size={24} color={clsx(darkMode ? "white" : "black")} />
       <div className="flex gap-4">
         <Switch
           checked={darkMode}
