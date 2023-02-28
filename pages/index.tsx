@@ -1,5 +1,6 @@
 import Head from "next/head";
 // import { Inter } from "next/font/google";
+import Card from "@/components/Card";
 import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import { SetStateAction, useState } from "react";
@@ -45,6 +46,7 @@ export default function Home() {
           getDefintion={getDefintion}
           word={word}
         />
+        <Card />
       </main>
     </div>
   );

@@ -13,7 +13,7 @@ export default function SearchBar({
   word,
 }: SearchBarProps) {
   return (
-    <form className="flex flex-col md:flex-row justify-center items-center content-around gap-2">
+    <form className="flex flex-col md:flex-row justify-center items-center content-around gap-2 py-6">
       <input
         type="text"
         id="first_name"
