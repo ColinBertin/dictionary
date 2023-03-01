@@ -3,14 +3,18 @@ import Head from "next/head";
 import Card from "@/components/Card";
 import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
-import { SetStateAction, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import clsx from "clsx";
 
 // const inter = Inter({ subsets: ["latin"] });
+type Definition = {
+  word: string;
+};
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [word, setWord] = useState("");
+  const [definition, setDefinition] = useState<Definition>();
 
   const handleDarkMode = () => {
     setDarkMode((mode) => !mode);
@@ -26,11 +30,15 @@ export default function Home() {
       const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      setDefinition(data[0]);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    console.log(definition);
+  }, [definition]);
 
   return (
     <div className={clsx(darkMode ? "bg-black" : "", "h-screen w-screen")}>
@@ -46,7 +54,7 @@ export default function Home() {
           getDefintion={getDefintion}
           word={word}
         />
-        <Card />
+        {definition && <Card data={definition} />}
       </main>
     </div>
   );
