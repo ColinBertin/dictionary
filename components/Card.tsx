@@ -1,19 +1,26 @@
-import { useEffect, useState } from "react";
+import clsx from "clsx";
+import { useEffect } from "react";
 
 type CardProps = {
   data: {
+    phonetics: [{ audio: string }];
     word: string;
   };
+  darkMode: boolean;
 };
 
-export default function Card({ data }: CardProps) {
+export default function Card({ data, darkMode }: CardProps) {
   useEffect(() => {
-    console.log(data.word);
+    console.log(data);
   }, [data]);
   return (
-    <div className="px-24 py-28">
-      <header>
-        <h1>{data.word}</h1>
+    <div className={clsx(darkMode ? "text-white" : "", "px-24 py-28")}>
+      <header className="flex justify-around">
+        <h1 className="text-8xl">{data.word}</h1>
+        <audio controls>
+          <source src={data.phonetics[0].audio} type="audio/mp3" />
+          Your browser does not support the audio tag.
+        </audio>
       </header>
     </div>
   );

@@ -8,6 +8,7 @@ import clsx from "clsx";
 
 // const inter = Inter({ subsets: ["latin"] });
 type Definition = {
+  phonetics: [{ audio: string }];
   word: string;
 };
 
@@ -54,7 +55,7 @@ export default function Home() {
           getDefintion={getDefintion}
           word={word}
         />
-        {definition && <Card data={definition} />}
+        {definition && <Card data={definition} darkMode={darkMode} />}
       </main>
     </div>
   );
